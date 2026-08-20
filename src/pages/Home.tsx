@@ -1,261 +1,146 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { ThermometerSun, Wind, Sun, Fan, CheckCircle, Award, Star, Wrench, MapPin, Phone, Clock, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import heroBg from "@/assets/hero-bg.jpg";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
+import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 
-const services = [
+const contacts = [
   {
-    icon: ThermometerSun,
-    title: "Pompy Ciepła",
-    desc: "Nowoczesne pompy ciepła powietrze-woda i gruntowe. Ogrzewanie, chłodzenie i ciepła woda użytkowa.",
-    benefits: ["Niskie koszty eksploatacji", "Dotacje nawet do 50%", "Ogrzewanie i chłodzenie"],
-    image: gallery1,
+    icon: MapPin,
+    label: "Siedziba",
+    value: "ul. Armii Krajowej 7, 45-071 Opole",
+    href: "https://maps.google.com/?q=Armii+Krajowej+7,+Opole",
   },
   {
-    icon: Wind,
-    title: "Klimatyzacja",
-    desc: "Systemy klimatyzacji do domu i biura. Montaż, serwis i przeglądy klimatyzatorów wiodących marek.",
-    benefits: ["Komfort termiczny cały rok", "Energooszczędne modele", "Cicha praca urządzeń"],
-    image: gallery3,
+    icon: Phone,
+    label: "Telefon",
+    value: "605 680 745",
+    href: "tel:+48605680745",
   },
   {
-    icon: Sun,
-    title: "Fotowoltaika",
-    desc: "Instalacje fotowoltaiczne dopasowane do Twoich potrzeb. Produkuj własną energię i oszczędzaj.",
-    benefits: ["Obniżenie rachunków", "Niezależność energetyczna", "Ekologiczna energia"],
-    image: gallery2,
-  },
-  {
-    icon: Fan,
-    title: "Rekuperacja",
-    desc: "Systemy wentylacji mechanicznej z odzyskiem ciepła. Czyste powietrze bez strat energii.",
-    benefits: ["Czyste powietrze 24/7", "Odzysk ciepła do 95%", "Redukcja alergenów"],
-    image: gallery4,
-  },
-];
-
-const benefits = [
-  {
-    icon: Award,
-    title: "Ponad 40 lat doświadczenia",
-    desc: "Działamy nieprzerwanie od 1984 roku. Zaufały nam setki klientów w regionie Opola.",
-  },
-  {
-    icon: Star,
-    title: "Ocena 5.0 w Google",
-    desc: "Nasi klienci doceniają jakość usług, terminowość i profesjonalne podejście.",
-  },
-  {
-    icon: Wrench,
-    title: "Kompleksowa obsługa",
-    desc: "Od projektu, przez montaż, po serwis gwarancyjny i pogwarancyjny — wszystko w jednym miejscu.",
+    icon: Mail,
+    label: "E-mail",
+    value: "atb-bud@o2.pl",
+    href: "mailto:atb-bud@o2.pl",
   },
 ];
 
 const Home = () => {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
-  const scrollRef = useScrollAnimation();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Dziękujemy! Skontaktujemy się wkrótce.");
-    setForm({ name: "", email: "", phone: "", message: "" });
-  };
-
   return (
-    <div ref={scrollRef}>
-      {/* Hero */}
-      <section className="relative min-h-[85vh] flex items-center">
-        <div className="absolute inset-0">
-          <img src={heroBg} alt="Nowoczesny dom z pompą ciepła i fotowoltaiką" className="w-full h-full object-cover" width={1920} height={1080} />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/60 to-foreground/30" />
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-2xl flex flex-col gap-6">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-1.5 text-sm font-medium text-white/90 w-fit">
-              <Star className="h-4 w-4 fill-white/80" /> 5.0 na Google · Od 1984 roku
-            </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-[1.1] text-white">
-              Inżynieryjna precyzja.{" "}
-              <span className="text-white/70">Komfort na lata.</span>
+    <main className="relative h-dvh overflow-hidden bg-white text-atb-black">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="animate-drift absolute -left-24 -top-32 h-[28rem] w-[28rem] rounded-full bg-atb-green/[0.07] blur-3xl" />
+        <div className="animate-drift absolute -bottom-24 -right-16 h-[32rem] w-[32rem] rounded-full bg-atb-soft/10 blur-3xl [animation-delay:-7s]" />
+        <div className="animate-spin-slow absolute left-1/2 top-1/2 h-[52rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-atb-green/10" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(27,109,49,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(27,109,49,0.045)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col px-5 py-4 sm:px-8 sm:py-5 lg:px-10 lg:py-6">
+        <header className="animate-rise flex shrink-0 items-center justify-between">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-atb-green sm:text-[11px]">
+            Opole
+          </p>
+          <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-black/45 sm:text-[11px]">
+            www.atb-bud.pl
+          </p>
+        </header>
+
+        <section className="grid min-h-0 flex-1 items-center gap-4 py-3 sm:gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] lg:gap-12 lg:py-4">
+          <div className="animate-enter-left flex justify-center lg:justify-end">
+            <div className="animate-float">
+              <img
+                src="/logo-atb-bud.png"
+                alt="ATB-BUD — Budujemy dla Ciebie"
+                className="h-auto w-[min(42vw,220px)] sm:w-[min(36vw,280px)] lg:w-[300px]"
+              />
+            </div>
+          </div>
+
+          <div className="animate-enter-right text-center lg:text-left">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-atb-green sm:text-[11px] sm:tracking-[0.38em]">
+              Strona w przebudowie
+            </p>
+
+            <h1 className="mt-2 max-w-xl text-[1.65rem] font-extrabold leading-[1.15] tracking-tight text-atb-black sm:mt-3 sm:text-4xl lg:text-[2.75rem]">
+              Budujemy nową przestrzeń
+              <span className="block text-atb-green">cyfrową.</span>
             </h1>
-            <p className="text-lg md:text-xl text-white/70 max-w-xl">
-              Pompy ciepła · Klimatyzacja · Fotowoltaika · Rekuperacja. Kompleksowe instalacje OZE i HVAC od A do Z.
+
+            <p className="font-script mt-2 text-[1.7rem] leading-none text-atb-green sm:mt-3 sm:text-4xl">
+              Budujemy dla Ciebie!
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-2">
-              <Button
-                variant="cta"
-                size="lg"
-                onClick={() => document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" })}
-              >
-                Zamów darmową wycenę
-              </Button>
-              <Button variant="cta-outline" size="lg" asChild>
-                <Link to="/uslugi">Poznaj nasze usługi</Link>
-              </Button>
+
+            <div className="animate-pulse-line mx-auto mt-3 h-px w-32 bg-atb-green sm:mt-5 sm:w-40 lg:mx-0" />
+
+            <p className="mx-auto mt-3 hidden max-w-xl text-sm leading-relaxed text-black/60 sm:mt-4 sm:block sm:text-base lg:mx-0">
+              Nasza witryna powstaje na nowo. W tym czasie zapraszamy do kontaktu
+              telefonicznego lub mailowego — jesteśmy w Opolu i realizujemy
+              inwestycje budowlane z pełnym zaangażowaniem.
+            </p>
+
+            <div className="mx-auto mt-4 w-full max-w-md sm:mt-6 lg:mx-0">
+              <div className="h-[3px] overflow-hidden rounded-full bg-atb-mist">
+                <div className="animate-shimmer h-full w-2/3 rounded-full bg-[linear-gradient(90deg,#1B6D31,#3AA155,#1B6D31)]" />
+              </div>
+              <p className="mt-2 text-[10px] font-medium uppercase tracking-[0.28em] text-black/35">
+                Prace w toku
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Services Grid */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 fade-up">
-            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-3">Co robimy</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold">Nasze specjalizacje</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((s) => (
-              <div
-                key={s.title}
-                className="fade-up group rounded-2xl overflow-hidden border border-border/50 bg-background hover:shadow-lg transition-shadow"
+        <section className="animate-rise delay-5 grid shrink-0 grid-cols-3 gap-2 sm:gap-3">
+          {contacts.map((item) => {
+            const Icon = item.icon;
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                className="group rounded-xl border border-atb-green/15 bg-white/80 px-2 py-2.5 text-left backdrop-blur-sm transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:border-atb-green/40 hover:bg-atb-mist sm:rounded-2xl sm:px-4 sm:py-3"
               >
-                <div className="aspect-[16/9] overflow-hidden">
-                  <img
-                    src={s.image}
-                    alt={s.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-8 space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="rounded-lg bg-muted p-2.5 text-foreground">
-                      <s.icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="text-xl font-bold">{s.title}</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                  <ul className="space-y-1.5">
-                    {s.benefits.map((b) => (
-                      <li key={b} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <CheckCircle className="h-4 w-4 text-accent flex-shrink-0" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12 fade-up">
-            <Button variant="cta-outline" size="lg" asChild>
-              <Link to="/uslugi" className="gap-2">
-                Wszystkie usługi <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+                <Icon className="mb-1.5 h-3.5 w-3.5 text-atb-green transition-transform duration-300 ease-in-out group-hover:scale-110 sm:mb-2 sm:h-4 sm:w-4" />
+                <p className="text-[8px] font-semibold uppercase tracking-[0.16em] text-black/40 sm:text-[10px] sm:tracking-[0.22em]">
+                  {item.label}
+                </p>
+                <p className="mt-1 text-[10px] font-medium leading-snug text-atb-black sm:text-sm">
+                  {item.value}
+                </p>
+              </a>
+            );
+          })}
+        </section>
 
-      {/* About / Why Accord */}
-      <section id="o-nas" className="py-24 section-alt scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 fade-up">
-            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-3">O firmie</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold">Dlaczego Accord?</h2>
-            <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-              Budujemy komfort i oszczędności — z pasją i ponad 40-letnim doświadczeniem.
+        <footer className="animate-rise delay-6 mt-3 flex shrink-0 items-center justify-between gap-4 border-t border-atb-green/10 pt-3 sm:mt-4 sm:pt-4">
+          <div className="min-w-0 text-left">
+            <p className="truncate text-[11px] font-bold tracking-wide text-atb-black sm:text-sm">
+              ATB-BUD 2 SP. Z O.O.
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {benefits.map((b) => (
-              <div
-                key={b.title}
-                className="fade-up rounded-2xl bg-background border border-border/50 p-10 text-center shadow-sm hover:shadow-md transition-shadow flex flex-col items-center gap-5"
-              >
-                <div className="rounded-xl bg-muted p-4 text-foreground">
-                  <b.icon className="h-7 w-7" />
-                </div>
-                <h3 className="text-lg font-bold">{b.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact */}
-      <section id="kontakt" className="py-24 bg-background scroll-mt-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16 fade-up">
-            <p className="text-sm font-semibold tracking-[0.2em] uppercase text-muted-foreground mb-3">Kontakt</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold">Gotowy na zmiany?</h2>
-            <p className="text-muted-foreground mt-4 max-w-xl mx-auto">
-              Skontaktuj się z nami — przygotujemy bezpłatną wycenę.
+            <p className="mt-0.5 text-[10px] text-black/50 sm:text-xs">
+              NIP 754 313 04 89
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {/* Info */}
-            <div className="space-y-8 fade-up">
-              <div>
-                <h3 className="text-xl font-bold mb-2">F.U.H. Accord</h3>
-                <p className="text-muted-foreground text-sm">Inżynieryjna precyzja od 1984 roku.</p>
-              </div>
-              <div className="space-y-5">
-                <div className="flex items-start gap-4">
-                  <div className="rounded-lg bg-muted p-2.5 text-foreground"><MapPin className="h-5 w-5" /></div>
-                  <div>
-                    <p className="font-medium text-sm">Adres</p>
-                    <p className="text-sm text-muted-foreground">ul. Opolska 27, 46-024 Masów</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="rounded-lg bg-muted p-2.5 text-foreground"><Phone className="h-5 w-5" /></div>
-                  <div>
-                    <p className="font-medium text-sm">Telefon</p>
-                    <a href="tel:+48601475547" className="text-sm text-muted-foreground hover:text-foreground transition-colors">+48 601 475 547</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="rounded-lg bg-muted p-2.5 text-foreground"><Clock className="h-5 w-5" /></div>
-                  <div>
-                    <p className="font-medium text-sm">Godziny pracy</p>
-                    <p className="text-sm text-muted-foreground">Pon–Pt: 09:00–17:00</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Form */}
-            <form onSubmit={handleSubmit} className="fade-up rounded-2xl border border-border/50 bg-background p-8 shadow-sm space-y-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium">Imię i nazwisko</label>
-                  <Input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} required placeholder="Jan Kowalski" />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-medium">Telefon</label>
-                  <Input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="+48 ..." />
-                </div>
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-sm font-medium">Email</label>
-                <Input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required placeholder="jan@example.com" />
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-sm font-medium">Wiadomość</label>
-                <Textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} required placeholder="Opisz swoje potrzeby..." rows={5} />
-              </div>
-              <Button type="submit" variant="cta" size="lg" className="w-full">
-                Wyślij wiadomość
-              </Button>
-            </form>
+          <div className="flex shrink-0 items-center gap-3">
+            <a
+              href="https://www.instagram.com/atbbud.opole/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram ATB-BUD Opole"
+              className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-atb-green/25 text-atb-green transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-atb-green hover:bg-atb-green hover:text-white sm:h-16 sm:w-16"
+            >
+              <Instagram className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.75} />
+            </a>
+            <a
+              href="https://www.facebook.com/AtbBudOpole/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook ATB-BUD Opole"
+              className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-atb-green/25 text-atb-green transition-all duration-300 ease-in-out hover:-translate-y-1 hover:border-atb-green hover:bg-atb-green hover:text-white sm:h-16 sm:w-16"
+            >
+              <Facebook className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={1.75} />
+            </a>
           </div>
-        </div>
-      </section>
-    </div>
+        </footer>
+      </div>
+    </main>
   );
 };
 

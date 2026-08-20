@@ -4,82 +4,220 @@
 
 @layer base {
   :root {
+    --atb-green: #1b6d31;
+    --atb-green-mid: #2a8a42;
+    --atb-green-soft: #3aa155;
+    --atb-black: #0a0a0a;
+    --atb-white: #ffffff;
+    --atb-mist: #f4f7f4;
+
     --background: 0 0% 100%;
-    --foreground: 215 28% 17%;
-
-    --card: 210 20% 98%;
-    --card-foreground: 215 28% 17%;
-
+    --foreground: 0 0% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
     --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 17%;
-
-    --primary: 215 25% 27%;
+    --popover-foreground: 0 0% 4%;
+    --primary: 138 60% 27%;
     --primary-foreground: 0 0% 100%;
-
-    --secondary: 210 20% 98%;
-    --secondary-foreground: 215 25% 27%;
-
-    --muted: 220 14% 96%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 82 36% 32%;
+    --secondary: 140 20% 96%;
+    --secondary-foreground: 0 0% 4%;
+    --muted: 140 16% 96%;
+    --muted-foreground: 0 0% 32%;
+    --accent: 138 60% 27%;
     --accent-foreground: 0 0% 100%;
-
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 215 25% 27%;
-
-    --radius: 0.75rem;
-
-    --section-alt: 210 20% 98%;
-    --slate: 215 19% 35%;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 140 18% 88%;
+    --input: 140 18% 88%;
+    --ring: 138 60% 27%;
+    --radius: 1.25rem;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
 
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
+  html,
+  body,
+  #root {
+    height: 100%;
+    overflow: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight text-foreground;
+  body {
+    @apply bg-white text-foreground antialiased;
+    font-family: "Montserrat", system-ui, sans-serif;
+    overflow-x: hidden;
   }
 }
 
 @layer utilities {
-  .glass {
-    @apply bg-white/90 backdrop-blur-xl border-b border-border/40;
+  .font-script {
+    font-family: "Caveat", cursive;
   }
 
-  .section-alt {
-    background-color: hsl(var(--section-alt));
+  .text-atb-green {
+    color: var(--atb-green);
+  }
+
+  .bg-atb-green {
+    background-color: var(--atb-green);
   }
 }
 
-/* Scroll animation */
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes enter-left {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes enter-right {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    transform: scaleX(0.42);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-18px, 12px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-enter-left {
+  animation: enter-left 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-enter-right {
+  animation: enter-right 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-float {
+  animation: float-soft 5.5s ease-in-out infinite;
+}
+
+.animate-pulse-line {
+  animation: pulse-line 3.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 2.8s linear infinite;
+}
+
+.animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 48s linear infinite;
+}
+
+.delay-1 {
+  animation-delay: 0.12s;
+}
+.delay-2 {
+  animation-delay: 0.24s;
+}
+.delay-3 {
+  animation-delay: 0.38s;
+}
+.delay-4 {
+  animation-delay: 0.52s;
+}
+.delay-5 {
+  animation-delay: 0.68s;
+}
+.delay-6 {
+  animation-delay: 0.84s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-enter-left,
+  .animate-enter-right,
+  .animate-float,
+  .animate-pulse-line,
+  .animate-shimmer,
+  .animate-drift,
+  .animate-spin-slow {
+    animation: none !important;
+  }
 }

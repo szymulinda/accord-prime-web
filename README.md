@@ -1,22 +1,19 @@
-# Accord Prime Web / Blueprint Elegance Tech - HVAC Solutions
+# ATB-BUD — strona w przebudowie
 
-## 📌 Overview
-A professional, high-conversion landing page designed for an HVAC (Heating, Ventilation, and Air Conditioning) company specializing in heat pumps and solar panels. Focused on establishing trust and driving direct client inquiries.
+Tymczasowa witryna firmy **ATB-BUD 2 Sp. z o.o.** z Opola.
 
-## 🚀 Tech Stack
-* **Frontend:** React, TypeScript, Vite, Tailwind CSS, Framer Motion
-* **Backend/BaaS:** Supabase
-* **Testing:** Vitest, Playwright
-* **Tooling:** ESLint, PostCSS
+## Kontakt
 
-## ⚙️ Key Features
-* **Free Quote System:** Streamlined lead capture form integrated directly with the backend.
-* **Service Showcase:** Clear, responsive presentation of complex engineering services.
-* **Performance Focused:** Fast load times to ensure minimal bounce rates on mobile devices.
-* **Modern UI Elements:** Smooth scrolling and interactive components using Framer Motion.
+- Adres: ul. Armii Krajowej 7, 45-071 Opole
+- Tel: 605 680 745
+- E-mail: atb-bud@o2.pl
+- NIP: 754 313 04 89
+- Instagram: https://www.instagram.com/atbbud.opole/
+- Facebook: https://www.facebook.com/AtbBudOpole/
 
-## 🛠️ Installation & Setup
+## Uruchomienie
 
 ```bash
 npm install
 npm run dev
+```
