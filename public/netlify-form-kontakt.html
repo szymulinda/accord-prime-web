@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Form detection — ATB-BUD</title>
+  <meta name="robots" content="noindex,nofollow">
+</head>
+<body>
+  <!--
+    Plik pomocniczy dla Netlify Forms: gwarantuje wykrycie formularza "kontakt"
+    podczas builda (Vite/static). Nie jest przeznaczony dla użytkowników.
+  -->
+  <form name="kontakt" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" netlify hidden>
+    <input type="hidden" name="form-name" value="kontakt">
+    <input type="text" name="bot-field">
+    <input type="text" name="name">
+    <input type="tel" name="phone">
+    <input type="email" name="email">
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>
